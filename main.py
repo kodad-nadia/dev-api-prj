@@ -6,10 +6,10 @@ from pydantic import BaseModel
 
 # Connexion DB
 connexion = psycopg2.connect(
-    host="localhost",
-    database="Shop-Wise",
-    user="postgres",
-    password="API",
+    host="dpg-ci8rn6dgkuvmfnsaagmg-a.frankfurt-postgres.render.com",
+    database="shop_wise",
+    user="nadia",
+    password="f5yLV6vAF5BNjPe8b1Ok27R97ziKIt5m",
     cursor_factory=RealDictCursor
 )
 cursor = connexion.cursor()  # TODO Faire des trucs
