@@ -20,7 +20,7 @@ async def create_customer(
         # 1. On ne stock pas le mot de pass "en claire" mais le hash
         hashed_password = utilities.hash_password(payload.customerPassword) 
         # 2. Creation d'un object ORM pour être injecté dans la DB 
-        new_customer= models_orm.Customers(password=hashed_password, email= payload.customerEmail)
+        new_customer= models_orm.Customer(password=hashed_password, email= payload.customerEmail)
         # 3. Send query
         cursor.add(new_customer) 
         # 4. Save the staged changes
@@ -36,13 +36,13 @@ async def create_customer(
     
 @router.get('', response_model=List[schemas_dto.Customer_response])
 async def get_all_customers(cursor: Session = Depends(database.get_cursor)):
-    all_customers = cursor.query(models_orm.Customers).all()
+    all_customers = cursor.query(models_orm.Customer).all()
     return all_customers
 
 # Exercice not an actual use case
 @router.get('/{customer_id}', response_model=schemas_dto.Customer_response)
 async def get_user_by_id(customer_id:int, cursor: Session = Depends(database.get_cursor)):
-    corresponding_customer = cursor.query(models_orm.Customers).filter(models_orm.Customers.id == customer_id).first()
+    corresponding_customer = cursor.query(models_orm.Customer).filter(models_orm.Customer.id == customer_id).first()
     if(corresponding_customer):
         return corresponding_customer
     else:

@@ -40,11 +40,11 @@ async def get_clothe(clothe_id:int, cursor:Session= Depends(get_cursor)):
 # CREATE / POST 
 @router.post('', status_code=status.HTTP_201_CREATED)
 async def create_clothe(payload: schemas_dto.Clothe_POST_Body, cursor:Session= Depends(get_cursor)):
-    new_clothe = models_orm.clothe(name=payload.clotheName, price=payload.clothePrice) # build the insert
+    new_clothe = models_orm.Clothe(name=payload.clotheName, price=payload.clothePrice) # build the insert
     cursor.add(new_clothe) # Send the query
     cursor.commit() #Save the staged change
     cursor.refresh(new_clothe)
-    return {"message" : f"New watch {new_clothe.name} added sucessfully with id: {new_clothe.id}"} 
+    return {"message" : f"New clothe {new_clothe.name} added sucessfully with id: {new_clothe.id}"} 
 
 # DELETE ? 
 @router.delete('/{clothe_id}', status_code=status.HTTP_204_NO_CONTENT)
