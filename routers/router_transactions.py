@@ -25,7 +25,7 @@ async def list_transactions(
     cursor: Session = Depends(get_cursor)):
         # Le décodage du token permet de récupérer l'identifiant du customer
         decoded_customer_id = utilities.decode_token(token)
-        all_transactions = cursor.query(models_orm.Transactions).filter(models_orm.Transactions.customer_id == decoded_customer_id).all()
+        all_transactions = cursor.query(models_orm.Transaction).filter(models_orm.Transaction.customer_id == decoded_customer_id).all()
         return all_transactions # data format à ajuster cela besoin
 
 # Exercice : get all transactions
