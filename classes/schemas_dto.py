@@ -4,14 +4,14 @@ from pydantic import BaseModel
 # DTO : Data Transfert Object ou Schema
 # Représente la structure de la données (data type) en entrée ou en sortie de notre API.
 
-class Product_POST_Body (BaseModel):
-    productName: str
-    productPrice: float
+class Clothe_POST_Body (BaseModel):
+    clotheName: str
+    clothePrice: float
 
-class Product_PATCH_Body (BaseModel):
+class Clothe_PATCH_Body (BaseModel):
     newFeatured: bool
 
-class Product_GETID_Response(BaseModel): # format de sortie (response)
+class Clothe_GETID_Response(BaseModel): # format de sortie (response)
     id: int
     name: str
     price: str

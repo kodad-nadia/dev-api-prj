@@ -11,7 +11,7 @@ from classes.database import database_engine
 import classes.models_orm # Import des ORM
 
 #Import des routers
-import routers.router_products, routers.router_customers, routers.router_transactions, routers.router_auth
+import routers.router_clothes, routers.router_customers, routers.router_transactions, routers.router_auth
 
 # Créer les tables si elles ne sont pas présente dans la DB
 classes.models_orm.Base.metadata.create_all(bind=database_engine)
@@ -28,7 +28,7 @@ app= FastAPI(
     )
 
 # Ajouter les routers dédiés
-app.include_router(routers.router_products.router)
+app.include_router(routers.router_clothes.router)
 app.include_router(routers.router_customers.router)
 app.include_router(routers.router_transactions.router)
 app.include_router(routers.router_auth.router)
