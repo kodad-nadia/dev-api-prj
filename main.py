@@ -22,7 +22,7 @@ classes.models_orm.Base.metadata.create_all(bind=database_engine)
 
 #Lancement de l'API
 app= FastAPI( 
-    title="Watches API",
+    title="Shop Wise",
     description=api_description,
     openapi_tags=tags_metadata # tagsmetadata definit au dessus
     )
